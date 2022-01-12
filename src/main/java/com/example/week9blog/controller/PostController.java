@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+
 @RestController
 @RequestMapping("/post")
 public class PostController {
@@ -27,6 +29,7 @@ public class PostController {
     public String savePost(@RequestBody Post post, @PathVariable Long userid) {
         UserInfo userInfo = userServices.findUserById(userid);
         if (userInfo != null) {
+            post.setCreatedOn(Instant.now());
             postServices.savePost(userid, post);
             return "Post " + post + "created";
         }

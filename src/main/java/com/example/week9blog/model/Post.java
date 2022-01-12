@@ -20,7 +20,6 @@ public class Post {
     private UserInfo userInfo;
     @Column //(nullable = false)
     private String title;
-    @Lob
     @Column //(nullable = false)
     private String content;
     @Column
