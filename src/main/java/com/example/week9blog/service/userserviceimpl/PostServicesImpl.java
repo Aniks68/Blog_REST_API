@@ -8,6 +8,8 @@ import com.example.week9blog.service.PostServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class PostServicesImpl implements PostServices {
 
@@ -32,6 +34,7 @@ public class PostServicesImpl implements PostServices {
     }
 
     @Override
+    @Transactional
     public Post editPost(Long postId, String title, String content) {
         Post post1 = postRepository.getById(postId);
             post1.setTitle(title);
