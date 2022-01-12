@@ -1,5 +1,6 @@
 package com.example.week9blog.controller;
 
+import com.example.week9blog.dto.PostDto;
 import com.example.week9blog.model.Post;
 import com.example.week9blog.model.UserInfo;
 import com.example.week9blog.service.PostServices;
@@ -35,6 +36,16 @@ public class PostController {
         }
         return null;
     }
+
+    /*@PutMapping("edit/{postId}/userInfo/{id}")
+    public String editPost(@RequestBody Post post, @PathVariable("id")Long userid,
+                           @PathVariable("postId")Long postId) {
+        Post post = postServices.(postId);
+        if (postServices.editPost(post, userid, postId)) {
+
+        }
+    }*/
+
 
 
 

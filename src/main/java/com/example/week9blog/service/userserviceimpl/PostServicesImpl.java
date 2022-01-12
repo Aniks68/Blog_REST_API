@@ -30,4 +30,18 @@ public class PostServicesImpl implements PostServices {
         }
         return null;
     }
+
+    @Override
+    public Post editPost(Long postId, String title, String content) {
+        Post post1 = postRepository.getById(postId);
+            post1.setTitle(title);
+            post1.setContent(content);
+            postRepository.save(post1);
+            return post1;
+    }
+
+    @Override
+    public Post findPostById(Long postId){
+        return postRepository.findPostById(postId);
+    }
 }
