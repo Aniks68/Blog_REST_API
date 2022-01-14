@@ -8,5 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface CommentService {
     Comment saveComment(Long postId, Comment comment);
-//    Comment findById(Long id);
+    Comment findCommentById(Long commentId);
+
+    Comment editComment(Long commentId, String content);
 }

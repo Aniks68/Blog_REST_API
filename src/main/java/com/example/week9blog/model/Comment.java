@@ -23,7 +23,6 @@ public class Comment {
     @ManyToOne
     private Post post;
 
-
     @Column
     private Instant createdOn;
     @Column

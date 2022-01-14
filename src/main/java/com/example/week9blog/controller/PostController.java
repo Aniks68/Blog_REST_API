@@ -39,7 +39,7 @@ public class PostController {
         return null;
     }
 
-    @PutMapping("/edit/{userId}/{postId}")
+    @PutMapping("/editPost/{userId}/{postId}")
     public String editPost(@RequestBody PostDto postDto, @PathVariable Long userId,
                            @PathVariable("postId")Long postId) {
         Post post1 = postServices.findPostById(postId);

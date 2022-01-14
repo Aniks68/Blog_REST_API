@@ -1,16 +1,18 @@
 package com.example.week9blog.controller;
 
+import com.example.week9blog.dto.CommentDto;
 import com.example.week9blog.dto.PostDto;
 import com.example.week9blog.model.Comment;
 import com.example.week9blog.model.Post;
 import com.example.week9blog.model.UserInfo;
 import com.example.week9blog.service.CommentService;
 import com.example.week9blog.service.PostServices;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
-
+@Slf4j
 @RestController
 @RequestMapping("/comment")
 public class CommentController {
@@ -36,6 +38,22 @@ public class CommentController {
     }
 
 
+
+   @PutMapping("/editComment/{postId}/{commentId}")
+    public String editComment(@RequestBody CommentDto commentDto, @PathVariable Long postId,
+                              @PathVariable("commentId")Long commentId) {
+        Comment comment1 = commentService.findCommentById(commentId);
+        Post post1 = postServices.findPostById(postId);
+        System.out.println("++++++++= userId " + commentId);
+        log.info(String.valueOf(post1));
+        log.info(String.valueOf(commentId));
+        if (post1 != null & comment1 != null ) {
+            commentService.editComment(commentId, commentDto.getContent());
+            return "Comment Edited";
+        } else {
+            return "Invalid Credentials";
+        }
+    }
 
 
 

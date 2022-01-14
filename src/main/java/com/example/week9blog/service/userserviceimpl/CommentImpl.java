@@ -9,6 +9,8 @@ import com.example.week9blog.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 public class CommentImpl implements CommentService {
     CommentRepository commentRepository;
@@ -31,6 +33,18 @@ public class CommentImpl implements CommentService {
         return null;
     }
 
+    @Override
+    public Comment findCommentById(Long commentId) {
+        return commentRepository.findCommentById(commentId);
+    }
 
+    @Override
+    @Transactional
+    public Comment editComment(Long commentId, String content) {
+        Comment comment1 = commentRepository.getById(commentId);
+        comment1.setContent(content);
+        commentRepository.save(comment1);
+        return comment1;
+    }
 
 }
