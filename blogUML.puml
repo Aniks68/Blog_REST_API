@@ -1,0 +1,151 @@
+@startuml
+class com.example.week9blog.dto.CommentDto {
+- Long id
+- String content
+- String username
+}
+class com.example.week9blog.model.UserInfo {
+- Long id
+- String userName
+- String password
+- String email
++ String getUserName()
++ void setUserName(String)
++ String getPassword()
++ void setPassword(String)
++ String getEmail()
++ void setEmail(String)
+}
+interface com.example.week9blog.repository.CommentRepository {
+~ Comment findCommentById(Long)
+~ List<Comment> findAllById(Long)
+}
+class com.example.week9blog.dto.PostDto {
+- Long id
+- String content
+- String title
+- String username
+}
+class com.example.week9blog.dto.LoginDto {
+- String userName
+- String password
++ String getUsername()
++ void setUsername(String)
++ String getPassword()
++ void setPassword(String)
+}
+class com.example.week9blog.model.Post {
+- Long id
+- UserInfo userInfo
+- String title
+- String content
+- Instant createdOn
+- Instant updatedOn
+- String username
+}
+interface com.example.week9blog.service.PostServices {
+~ Post savePost(Long,Post)
+~ Post editPost(Long,String,String)
+~ Post findPostById(Long)
+}
+interface com.example.week9blog.repository.PostRepository {
+~ Post findPostById(Long)
+~ List<Post> findAllById(Long)
+}
+interface com.example.week9blog.repository.UserRepository {
+~ UserInfo findByUserNameAndPassword(String,String)
+~ Optional<UserInfo> findFirstByUserName(String)
+~ UserInfo findByUserName(String)
+~ UserInfo findUserInfosById(Long)
+}
+class com.example.week9blog.controller.CommentController {
+~ CommentService commentService
+~ PostServices postServices
++ String saveComment(Comment,Long)
++ String editComment(CommentDto,Long,Long)
+}
+class com.example.week9blog.model.CommentLike {
+- Long id
+- Comment comment
+- UserInfo userInfo
+}
+class com.example.week9blog.controller.UserController {
+- UserServices userServices
++ UserInfo signUp(UserInfo)
++ String signIn(UserInfo)
+}
+class com.example.week9blog.service.userserviceimpl.UserServicesImpl {
+~ UserRepository userRepository
++ List<UserInfo> findAllUser()
++ UserInfo saveUser(UserInfo)
++ UserInfo authenticate(String,String)
++ UserInfo findUserById(Long)
+}
+class com.example.week9blog.dto.RegisterDto {
+- String username
+- String email
+- String password
++ String getUsername()
++ void setUsername(String)
++ String getEmail()
++ void setEmail(String)
++ String getPassword()
++ void setPassword(String)
+}
+class com.example.week9blog.service.userserviceimpl.CommentImpl {
+~ CommentRepository commentRepository
+~ PostRepository postRepository
++ Comment saveComment(Long,Comment)
++ Comment findCommentById(Long)
++ Comment editComment(Long,String)
+}
+interface com.example.week9blog.service.CommentService {
+~ Comment saveComment(Long,Comment)
+~ Comment findCommentById(Long)
+~ Comment editComment(Long,String)
+}
+class com.example.week9blog.controller.PostController {
+~ UserInfo userInfo
+~ PostServices postServices
+~ UserServices userServices
++ String savePost(Post,Long)
++ String editPost(PostDto,Long,Long)
+}
+class com.example.week9blog.model.Comment {
+- Long id
+- String content
+- Post post
+- Instant createdOn
+- Instant updatedOn
+- UserInfo userInfo
+}
+class com.example.week9blog.service.userserviceimpl.PostServicesImpl {
+~ UserRepository userRepository
+~ PostRepository postRepository
++ Post savePost(Long,Post)
++ Post editPost(Long,String,String)
++ Post findPostById(Long)
+}
+class com.example.week9blog.Week9blogApplication {
++ {static} void main(String[])
+}
+interface com.example.week9blog.service.UserServices {
+~ List<UserInfo> findAllUser()
+~ UserInfo saveUser(UserInfo)
+~ UserInfo authenticate(String,String)
+~ UserInfo findUserById(Long)
+}
+class com.example.week9blog.model.PostLike {
+- Long id
+- Post post
+- UserInfo userInfo
+}
+
+
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.week9blog.repository.CommentRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.week9blog.repository.PostRepository
+org.springframework.data.jpa.repository.JpaRepository <|-- com.example.week9blog.repository.UserRepository
+com.example.week9blog.service.UserServices <|.. com.example.week9blog.service.userserviceimpl.UserServicesImpl
+com.example.week9blog.service.CommentService <|.. com.example.week9blog.service.userserviceimpl.CommentImpl
+com.example.week9blog.service.PostServices <|.. com.example.week9blog.service.userserviceimpl.PostServicesImpl
+@enduml
