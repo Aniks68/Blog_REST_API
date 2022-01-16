@@ -46,38 +46,17 @@ class UserServicesImplTest {
         userInfo.setEmail("jane.doe@example.org");
         userInfo.setId(123L);
         userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
+        userInfo.setUsername("janedoe");
         Optional<UserInfo> ofResult = Optional.of(userInfo);
-        when(this.userRepository.findFirstByUserName((String) any())).thenReturn(ofResult);
+        when(this.userRepository.findByUsernameOrEmail((String) any(), (String) any())).thenReturn(ofResult);
 
         UserInfo userInfo1 = new UserInfo();
         userInfo1.setEmail("jane.doe@example.org");
         userInfo1.setId(123L);
         userInfo1.setPassword("iloveyou");
-        userInfo1.setUserName("janedoe");
+        userInfo1.setUsername("janedoe");
         assertNull(this.userServicesImpl.saveUser(userInfo1));
-        verify(this.userRepository).findFirstByUserName((String) any());
-        assertTrue(this.userServicesImpl.findAllUser().isEmpty());
-    }
-
-    @Test
-    void testSaveUser2() {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setEmail("jane.doe@example.org");
-        userInfo.setId(123L);
-        userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
-        when(this.userRepository.save((UserInfo) any())).thenReturn(userInfo);
-        when(this.userRepository.findFirstByUserName((String) any())).thenReturn(Optional.empty());
-
-        UserInfo userInfo1 = new UserInfo();
-        userInfo1.setEmail("jane.doe@example.org");
-        userInfo1.setId(123L);
-        userInfo1.setPassword("iloveyou");
-        userInfo1.setUserName("janedoe");
-        assertSame(userInfo1, this.userServicesImpl.saveUser(userInfo1));
-        verify(this.userRepository).findFirstByUserName((String) any());
-        verify(this.userRepository).save((UserInfo) any());
+        verify(this.userRepository).findByUsernameOrEmail((String) any(), (String) any());
         assertTrue(this.userServicesImpl.findAllUser().isEmpty());
     }
 
@@ -87,10 +66,10 @@ class UserServicesImplTest {
         userInfo.setEmail("jane.doe@example.org");
         userInfo.setId(123L);
         userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
-        when(this.userRepository.findByUserNameAndPassword((String) any(), (String) any())).thenReturn(userInfo);
+        userInfo.setUsername("janedoe");
+        when(this.userRepository.findByUsernameAndPassword((String) any(), (String) any())).thenReturn(Optional.of(userInfo));
         assertSame(userInfo, this.userServicesImpl.authenticate("janedoe", "iloveyou"));
-        verify(this.userRepository).findByUserNameAndPassword((String) any(), (String) any());
+        verify(this.userRepository).findByUsernameAndPassword((String) any(), (String) any());
         assertTrue(this.userServicesImpl.findAllUser().isEmpty());
     }
 
@@ -100,7 +79,7 @@ class UserServicesImplTest {
         userInfo.setEmail("jane.doe@example.org");
         userInfo.setId(123L);
         userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
+        userInfo.setUsername("janedoe");
         when(this.userRepository.findUserInfosById((Long) any())).thenReturn(userInfo);
         assertSame(userInfo, this.userServicesImpl.findUserById(123L));
         verify(this.userRepository).findUserInfosById((Long) any());

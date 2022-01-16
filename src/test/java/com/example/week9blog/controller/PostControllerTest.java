@@ -39,14 +39,14 @@ class PostControllerTest {
         userInfo.setEmail("jane.doe@example.org");
         userInfo.setId(123L);
         userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
+        userInfo.setUsername("janedoe");
         when(this.userServices.findUserById((Long) any())).thenReturn(userInfo);
 
         UserInfo userInfo1 = new UserInfo();
         userInfo1.setEmail("jane.doe@example.org");
         userInfo1.setId(123L);
         userInfo1.setPassword("iloveyou");
-        userInfo1.setUserName("janedoe");
+        userInfo1.setUsername("janedoe");
 
         Post post = new Post();
         post.setContent("Not all who wander are lost");
@@ -62,7 +62,7 @@ class PostControllerTest {
         userInfo2.setEmail("jane.doe@example.org");
         userInfo2.setId(123L);
         userInfo2.setPassword("iloveyou");
-        userInfo2.setUserName("janedoe");
+        userInfo2.setUsername("janedoe");
 
         Post post1 = new Post();
         post1.setContent("Not all who wander are lost");
@@ -89,14 +89,14 @@ class PostControllerTest {
         userInfo.setEmail("jane.doe@example.org");
         userInfo.setId(123L);
         userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
+        userInfo.setUsername("janedoe");
         when(this.userServices.findUserById((Long) any())).thenReturn(userInfo);
 
         UserInfo userInfo1 = new UserInfo();
         userInfo1.setEmail("jane.doe@example.org");
         userInfo1.setId(123L);
         userInfo1.setPassword("iloveyou");
-        userInfo1.setUserName("janedoe");
+        userInfo1.setUsername("janedoe");
 
         Post post = new Post();
         post.setContent("Not all who wander are lost");
@@ -111,7 +111,7 @@ class PostControllerTest {
         userInfo2.setEmail("jane.doe@example.org");
         userInfo2.setId(123L);
         userInfo2.setPassword("iloveyou");
-        userInfo2.setUserName("janedoe");
+        userInfo2.setUsername("janedoe");
 
         Post post1 = new Post();
         post1.setContent("Not all who wander are lost");

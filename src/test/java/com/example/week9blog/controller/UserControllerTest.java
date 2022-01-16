@@ -33,14 +33,14 @@ class UserControllerTest {
         userInfo.setEmail("jane.doe@example.org");
         userInfo.setId(123L);
         userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
+        userInfo.setUsername("janedoe");
         when(this.userServices.authenticate((String) any(), (String) any())).thenReturn(userInfo);
 
         UserInfo userInfo1 = new UserInfo();
         userInfo1.setEmail("jane.doe@example.org");
         userInfo1.setId(123L);
         userInfo1.setPassword("iloveyou");
-        userInfo1.setUserName("janedoe");
+        userInfo1.setUsername("janedoe");
         String content = (new ObjectMapper()).writeValueAsString(userInfo1);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get("/user/signin")
                 .contentType(MediaType.APPLICATION_JSON)
@@ -60,14 +60,14 @@ class UserControllerTest {
         userInfo.setEmail("jane.doe@example.org");
         userInfo.setId(123L);
         userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
+        userInfo.setUsername("janedoe");
         when(this.userServices.saveUser((UserInfo) any())).thenReturn(userInfo);
 
         UserInfo userInfo1 = new UserInfo();
         userInfo1.setEmail("jane.doe@example.org");
         userInfo1.setId(123L);
         userInfo1.setPassword("iloveyou");
-        userInfo1.setUserName("janedoe");
+        userInfo1.setUsername("janedoe");
         String content = (new ObjectMapper()).writeValueAsString(userInfo1);
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post("/user/signup")
                 .contentType(MediaType.APPLICATION_JSON)

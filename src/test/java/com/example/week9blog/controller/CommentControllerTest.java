@@ -40,7 +40,7 @@ class CommentControllerTest {
         userInfo.setEmail("jane.doe@example.org");
         userInfo.setId(123L);
         userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
+        userInfo.setUsername("janedoe");
 
         Post post = new Post();
         post.setContent("Not all who wander are lost");
@@ -56,7 +56,7 @@ class CommentControllerTest {
         userInfo1.setEmail("jane.doe@example.org");
         userInfo1.setId(123L);
         userInfo1.setPassword("iloveyou");
-        userInfo1.setUserName("janedoe");
+        userInfo1.setUsername("janedoe");
 
         Post post1 = new Post();
         post1.setContent("Not all who wander are lost");
@@ -71,7 +71,7 @@ class CommentControllerTest {
         userInfo2.setEmail("jane.doe@example.org");
         userInfo2.setId(123L);
         userInfo2.setPassword("iloveyou");
-        userInfo2.setUserName("janedoe");
+        userInfo2.setUsername("janedoe");
 
         Comment comment = new Comment();
         comment.setContent("Not all who wander are lost");
@@ -86,7 +86,7 @@ class CommentControllerTest {
         userInfo3.setEmail("jane.doe@example.org");
         userInfo3.setId(123L);
         userInfo3.setPassword("iloveyou");
-        userInfo3.setUserName("janedoe");
+        userInfo3.setUsername("janedoe");
 
         Post post2 = new Post();
         post2.setContent("Not all who wander are lost");
@@ -101,7 +101,7 @@ class CommentControllerTest {
         userInfo4.setEmail("jane.doe@example.org");
         userInfo4.setId(123L);
         userInfo4.setPassword("iloveyou");
-        userInfo4.setUserName("janedoe");
+        userInfo4.setUsername("janedoe");
 
         Comment comment1 = new Comment();
         comment1.setContent("Not all who wander are lost");
@@ -127,7 +127,7 @@ class CommentControllerTest {
         userInfo.setEmail("jane.doe@example.org");
         userInfo.setId(123L);
         userInfo.setPassword("iloveyou");
-        userInfo.setUserName("janedoe");
+        userInfo.setUsername("janedoe");
 
         Post post = new Post();
         post.setContent("Not all who wander are lost");
@@ -143,7 +143,7 @@ class CommentControllerTest {
         userInfo1.setEmail("jane.doe@example.org");
         userInfo1.setId(123L);
         userInfo1.setPassword("iloveyou");
-        userInfo1.setUserName("janedoe");
+        userInfo1.setUsername("janedoe");
 
         Post post1 = new Post();
         post1.setContent("Not all who wander are lost");
@@ -158,7 +158,7 @@ class CommentControllerTest {
         userInfo2.setEmail("jane.doe@example.org");
         userInfo2.setId(123L);
         userInfo2.setPassword("iloveyou");
-        userInfo2.setUserName("janedoe");
+        userInfo2.setUsername("janedoe");
 
         Comment comment = new Comment();
         comment.setContent("Not all who wander are lost");
@@ -172,7 +172,7 @@ class CommentControllerTest {
         userInfo3.setEmail("jane.doe@example.org");
         userInfo3.setId(123L);
         userInfo3.setPassword("iloveyou");
-        userInfo3.setUserName("janedoe");
+        userInfo3.setUsername("janedoe");
 
         Post post2 = new Post();
         post2.setContent("Not all who wander are lost");
@@ -187,7 +187,7 @@ class CommentControllerTest {
         userInfo4.setEmail("jane.doe@example.org");
         userInfo4.setId(123L);
         userInfo4.setPassword("iloveyou");
-        userInfo4.setUserName("janedoe");
+        userInfo4.setUsername("janedoe");
 
         Comment comment1 = new Comment();
         comment1.setContent("Not all who wander are lost");

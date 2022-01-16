@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserServicesImpl implements UserServices {
@@ -26,17 +25,19 @@ public class UserServicesImpl implements UserServices {
 
     @Override
     public UserInfo saveUser(UserInfo userInfo) {
-        if (userRepository.findFirstByUserName(userInfo.getUserName()).isPresent()) {
+        UserInfo newUser = userRepository.findByUsernameOrEmail(userInfo.getUsername(), userInfo.getEmail()).orElse(null);
+        if (newUser != null) {
             System.out.println("This username is taken");
             return null;
         }
         userRepository.save(userInfo);
+        System.out.println("User of id: " + userInfo.getId() + " has been saved.");
         return userInfo;
     }
 
     @Override
     public UserInfo authenticate(String userName, String password){
-        return userRepository.findByUserNameAndPassword(userName, password);
+        return userRepository.findByUsernameAndPassword(userName, password).orElse(null);
     }
 
     @Override
