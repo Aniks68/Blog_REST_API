@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.Instant;
 
 @Service
 public class CommentImpl implements CommentService {
@@ -43,7 +44,9 @@ public class CommentImpl implements CommentService {
     public Comment editComment(Long commentId, String content) {
         Comment comment1 = commentRepository.getById(commentId);
         comment1.setContent(content);
+        comment1.setUpdatedOn(Instant.now());
         commentRepository.save(comment1);
+        System.out.println("Edited: " + comment1);
         return comment1;
     }
 

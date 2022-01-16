@@ -40,16 +40,15 @@ public class CommentController {
 
 
    @PutMapping("/editComment/{postId}/{commentId}")
-    public String editComment(@RequestBody CommentDto commentDto, @PathVariable Long postId,
+    public String editComment(String content, @PathVariable Long postId,
                               @PathVariable("commentId")Long commentId) {
+       System.out.println(content);
         Comment comment1 = commentService.findCommentById(commentId);
         Post post1 = postServices.findPostById(postId);
         System.out.println("++++++++= userId " + commentId);
-        log.info(String.valueOf(post1));
-        log.info(String.valueOf(commentId));
         if (post1 != null & comment1 != null ) {
-            commentService.editComment(commentId, commentDto.getContent());
-            return "Comment Edited";
+            commentService.editComment(commentId, content);
+            return "Comment Edited: " + comment1;
         } else {
             return "Invalid Credentials";
         }
