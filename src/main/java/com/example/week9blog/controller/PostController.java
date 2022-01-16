@@ -40,17 +40,17 @@ public class PostController {
     }
 
     @PutMapping("/editPost/{userId}/{postId}")
-    public String editPost(@RequestBody PostDto postDto, @PathVariable Long userId,
+    public String editPost(@ModelAttribute Post post, @PathVariable Long userId,
                            @PathVariable("postId")Long postId) {
         Post post1 = postServices.findPostById(postId);
         System.out.println("+++++++++ PID " + postId);
         UserInfo userInfo1 = userServices.findUserById(userId);
         System.out.println("++++++++= userId " + userId);
-        log.info(String.valueOf(post1));
-        log.info(String.valueOf(userInfo1));
-        if (post1 != null & userInfo1 != null ) {
-            postServices.editPost(postId, postDto.getTitle(), postDto.getContent());
-            return "Post Edited";
+//        log.info(String.valueOf(post1));
+//        log.info(String.valueOf(userInfo1));
+        if (post1 != null && userInfo1 != null && post1.getUserInfo().equals(userInfo1)) {
+            postServices.editPost(postId, post1.getTitle(), post1.getContent());
+            return "Post Edited: " + post1;
         } else {
             return "Invalid Credentials";
         }

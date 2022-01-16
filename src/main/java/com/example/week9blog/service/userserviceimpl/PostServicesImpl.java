@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.Instant;
 
 @Service
 public class PostServicesImpl implements PostServices {
@@ -27,6 +28,7 @@ public class PostServicesImpl implements PostServices {
         UserInfo userInfo1 = userRepository.findById(id).orElseThrow(NullPointerException::new);
         if(userInfo1 != null) {
             post.setUserInfo(userInfo1);
+            post.setUsername(userInfo1.getUsername());
             postRepository.save(post);
             return post;
         }
@@ -39,6 +41,7 @@ public class PostServicesImpl implements PostServices {
         Post post1 = postRepository.getById(postId);
             post1.setTitle(title);
             post1.setContent(content);
+            post1.setUpdatedOn(Instant.now());
             postRepository.save(post1);
             return post1;
     }

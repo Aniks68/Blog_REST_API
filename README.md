@@ -1,5 +1,5 @@
-# week-9-task-NJBodam
-week-9-task-NJBodam created by GitHub Classroom
+# week-9-task-Aniks68
+week-9-task-Aniks68 created by GitHub Classroom
 
 A Blog REST API where users can register, login and can post their thoughts
 and comments. 
